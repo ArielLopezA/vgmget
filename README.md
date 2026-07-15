@@ -1,5 +1,7 @@
 # vgmget ♬
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Download, convert and tag video game soundtracks from KHInsider.
 
 **vgmget** is a command-line tool for downloading video game soundtracks from [KHInsider](https://downloads.khinsider.com), converting them to M4A (AAC), embedding cover art, and tagging them with detailed metadata from [VGMDB](https://vgmdb.net) — all from a single command.
@@ -7,8 +9,6 @@ Download, convert and tag video game soundtracks from KHInsider.
 ---
 
 **vgmget** es una herramienta de línea de comandos para descargar soundtracks de videojuegos desde [KHInsider](https://downloads.khinsider.com), convertirlos a M4A (AAC), incrustar la portada del álbum y etiquetarlos con metadatos detallados desde [VGMDB](https://vgmdb.net) — todo desde un solo comando.
-
----
 
 ## Features / Características
 
@@ -36,25 +36,21 @@ Download, convert and tag video game soundtracks from KHInsider.
 - Convierte FLAC de forma segura — los originales se eliminan solo si todas las conversiones son exitosas
 - CLI silencioso siguiendo la regla Unix del silencio
 
----
-
 ## Design Goals
 
-- Keep dependencies minimal — no pip packages beyond `requests` and `beautifulsoup4`
 - Prefer the best available AAC encoder, prioritizing Apple's AudioToolbox (`aac_at`)
+- Keep dependencies minimal — no pip packages beyond `requests` and `beautifulsoup4`
 - Never delete original FLAC files unless every conversion succeeds
 - Preserve album structure, including multi-disc subfolder layouts
 - Keep the interface quiet and readable — output only what matters
 
 ---
 
-- Dependencias mínimas — sin paquetes pip más allá de `requests` y `beautifulsoup4`
 - Usar el mejor encoder AAC disponible, priorizando Apple AudioToolbox (`aac_at`)
+- Dependencias mínimas — sin paquetes pip más allá de `requests` y `beautifulsoup4`
 - Nunca eliminar los FLAC originales a menos que todas las conversiones sean exitosas
 - Preservar la estructura del álbum, incluyendo subcarpetas de múltiples discos
 - Interfaz silenciosa y legible — mostrar solo lo que importa
-
----
 
 ## Demo
 
@@ -94,8 +90,6 @@ Download, convert and tag video game soundtracks from KHInsider.
   ✓  8 pista(s) etiquetadas
 ```
 
----
-
 ## Requirements / Requisitos
 
 ### External dependencies / Dependencias externas
@@ -110,31 +104,20 @@ brew install aria2 ffmpeg atomicparsley
 pip install requests beautifulsoup4
 ```
 
----
-
 ## Installation / Instalación
 
 ```bash
-# Clone the repository / Clonar el repositorio
-git clone https://github.com/ArielLopezA/vgmget.git
-cd vgmget
+# Clone and enter directory
+git clone https://github.com/ArielLopezA/vgmget.git && cd vgmget
 
-# Give execution permissions / Dar permisos de ejecución
+# Install scripts to ~/.local/bin
 chmod +x vgmget
-
-# Create local bin if needed / Crear carpeta de binarios si no existe
 mkdir -p ~/.local/bin
+cp vgmget vgmdb_tag.py ~/.local/bin/
 
-# Copy files / Copiar archivos
-cp vgmget ~/.local/bin/
-cp vgmdb_tag.py ~/.local/bin/
-
-# Make sure ~/.local/bin is in your PATH / Asegurarse de que esté en el PATH
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc
+# Add ~/.local/bin to PATH if needed
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
 ```
-
----
 
 ## Usage / Uso
 
@@ -174,8 +157,6 @@ Pega la ruta de una carpeta local con archivos FLAC. El script:
 2. Convierte todos los archivos FLAC a M4A, incluyendo subcarpetas
 3. Ofrece etiquetar con datos de VGMDB
 
----
-
 ## VGMDB Tagging / Etiquetado con VGMDB
 
 To tag files with VGMDB metadata, copy the full text of an album page from [vgmdb.net](https://vgmdb.net) to your clipboard before confirming the tagging step. The script reads the clipboard automatically.
@@ -195,16 +176,12 @@ Tags written / Tags escritos:
 | Genre / Género | "Soundtrack" (fixed / fijo) |
 | Cover / Portada | KHInsider or VGMDB URL |
 
----
-
 ## Files / Archivos
 
 | File / Archivo | Description / Descripción |
 |---|---|
 | `vgmget` | Main script / Script principal |
 | `vgmdb_tag.py` | VGMDB tagging module / Módulo de etiquetado VGMDB |
-
----
 
 ## Configuration / Configuración
 
@@ -219,8 +196,6 @@ RETRY_DELAY     = 2      # Seconds between retries
 AAC_BITRATE     = "256k" # Conversion bitrate
 ```
 
----
-
 ## AAC Codec Priority / Prioridad de Codec AAC
 
 The script automatically detects and uses the best available AAC encoder:
@@ -230,8 +205,6 @@ El script detecta y usa automáticamente el mejor encoder AAC disponible:
 1. `aac_at` — Apple AudioToolbox (macOS native, best for Apple devices)
 2. `libfdk_aac` — Fraunhofer FDK (technically superior in objective metrics)
 3. `aac` — ffmpeg native (universal fallback)
-
----
 
 ## License / Licencia
 
