@@ -1,5 +1,7 @@
 # vgmget ♬
 
+Download, convert and tag video game soundtracks from KHInsider with a single command.
+
 **vgmget** is a command-line tool for downloading video game soundtracks from [KHInsider](https://downloads.khinsider.com), converting them to M4A (AAC), embedding cover art, and tagging them with detailed metadata from [VGMDB](https://vgmdb.net) — all from a single command.
 
 ---
@@ -18,6 +20,7 @@
 - Tags files with VGMDB data: title, artist, composer, album, year, catalog number, genre
 - Parallel scraping with per-thread HTTP sessions (no repeated TLS handshakes)
 - Clean progress bar during download — no verbose aria2c output
+- Safely converts FLAC files — originals are removed only after every conversion succeeds
 - Quiet CLI following the Unix rule of silence
 
 ---
@@ -30,6 +33,7 @@
 - Etiqueta los archivos con datos de VGMDB: título, artista, compositor, álbum, año, número de catálogo, género
 - Scraping paralelo con sesiones HTTP por hilo (sin handshakes TLS repetidos)
 - Barra de progreso limpia durante la descarga — sin output verbose de aria2c
+- Convierte FLAC de forma segura — los originales se eliminan solo si todas las conversiones son exitosas
 - CLI silencioso siguiendo la regla Unix del silencio
 
 ---
@@ -54,7 +58,7 @@
 
 ## Requirements / Requisitos
 
-### System / Sistema
+### External dependencies / Dependencias externas
 
 ```bash
 brew install aria2 ffmpeg atomicparsley
@@ -92,7 +96,58 @@ source ~/.zshrc
 
 ---
 
-## Usage / Uso
+## Demo
+
+```
+♬ vgmget
+─────────────────────────────────────────────
+  Pega una URL para descargar,
+  o una ruta de carpeta para convertir FLAC a M4A.
+
+  → https://downloads.khinsider.com/game-soundtracks/album/chrono-cross
+
+  Leyendo álbum...
+  8 pistas encontradas.
+  Buscando portada del álbum...
+  ✓  Portada optimizada (503 KB → 178 KB)
+
+  Extrayendo enlaces en paralelo (8 hilos)...
+  ·  01. Chrono Cross -Scars of Time-.flac  [FLAC]
+  ·  02. Arni (Home World).flac  [FLAC]
+  ·  03. Whirlwind - The Brink of Death.flac  [FLAC]
+
+  Descargando...
+  ████████████████████  100%  8.8 MB/s   [8/8]
+
+─────────────────────────────────────────────
+  ✓  Descarga completa
+
+  ¿Convertir a M4A ahora? [S/n]:
+
+  Convirtiendo 8 archivo(s)  FLAC → M4A  [aac_at  256k  portada incluida]
+
+  [1.01]  01. Chrono Cross -Scars of Time-.flac
+          01. Chrono Cross -Scars of Time-.m4a ✓
+  [1.02]  02. Arni (Home World).flac
+          02. Arni (Home World).m4a ✓
+
+─────────────────────────────────────────────
+  ✓  8 archivo(s) convertidos
+
+  ¿Etiquetar con VGMDB? [S/n]:
+  ✓  Album     CHRONO CROSS Orchestral Arrangement
+  ✓  Artist    Yasunori Mitsuda
+  ✓  Año       2019
+  ✓  Catalog   SQEX-10725
+  ✓  Tracklist 8 pista(s)  —  1 disco(s)
+
+─────────────────────────────────────────────
+  ✓  8 pista(s) con artist global
+```
+
+---
+
+
 
 Just run `vgmget` and paste a KHInsider URL or a local folder path when prompted.
 
