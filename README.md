@@ -1,6 +1,6 @@
 # vgmget ♬
 
-Download, convert and tag video game soundtracks from KHInsider with a single command.
+Download, convert and tag video game soundtracks from KHInsider.
 
 **vgmget** is a command-line tool for downloading video game soundtracks from [KHInsider](https://downloads.khinsider.com), converting them to M4A (AAC), embedding cover art, and tagging them with detailed metadata from [VGMDB](https://vgmdb.net) — all from a single command.
 
@@ -41,7 +41,7 @@ Download, convert and tag video game soundtracks from KHInsider with a single co
 ## Design Goals
 
 - Keep dependencies minimal — no pip packages beyond `requests` and `beautifulsoup4`
-- Prioritize Apple-compatible AAC output (`aac_at` first, always)
+- Prefer the best available AAC encoder, prioritizing Apple's AudioToolbox (`aac_at`)
 - Never delete original FLAC files unless every conversion succeeds
 - Preserve album structure, including multi-disc subfolder layouts
 - Keep the interface quiet and readable — output only what matters
@@ -49,10 +49,50 @@ Download, convert and tag video game soundtracks from KHInsider with a single co
 ---
 
 - Dependencias mínimas — sin paquetes pip más allá de `requests` y `beautifulsoup4`
-- Priorizar salida AAC compatible con Apple (`aac_at` primero, siempre)
+- Usar el mejor encoder AAC disponible, priorizando Apple AudioToolbox (`aac_at`)
 - Nunca eliminar los FLAC originales a menos que todas las conversiones sean exitosas
 - Preservar la estructura del álbum, incluyendo subcarpetas de múltiples discos
 - Interfaz silenciosa y legible — mostrar solo lo que importa
+
+---
+
+## Demo
+
+```
+♬ vgmget
+─────────────────────────────────────────────
+  → https://downloads.khinsider.com/game-soundtracks/album/chrono-cross
+
+  Leyendo álbum...  8 pistas encontradas.
+  ✓  Portada optimizada (503 KB → 178 KB)
+
+  Extrayendo enlaces en paralelo (8 hilos)...
+  ·  01. Chrono Cross -Scars of Time-.flac  [FLAC]
+  ·  02. Arni (Home World).flac  [FLAC]
+  ...
+
+  ████████████████████  100%  8.8 MB/s   [8/8]
+
+─────────────────────────────────────────────
+  ✓  Descarga completa
+
+  ¿Convertir a M4A ahora? [S/n]:
+
+  Convirtiendo 8 archivo(s)  FLAC → M4A  [aac_at  256k  portada incluida]
+
+  [1.01]  01. Chrono Cross -Scars of Time-.flac
+          01. Chrono Cross -Scars of Time-.m4a ✓
+
+─────────────────────────────────────────────
+  ✓  8 archivo(s) convertidos
+
+  ¿Etiquetar con VGMDB? [S/n]:
+  ✓  Album     CHRONO CROSS Orchestral Arrangement
+  ✓  Artist    Yasunori Mitsuda  /  Año  2019  /  Catalog  SQEX-10725
+
+─────────────────────────────────────────────
+  ✓  8 pista(s) etiquetadas
+```
 
 ---
 
@@ -96,73 +136,11 @@ source ~/.zshrc
 
 ---
 
-## Demo
-
-```
-♬ vgmget
-─────────────────────────────────────────────
-  Pega una URL para descargar,
-  o una ruta de carpeta para convertir FLAC a M4A.
-
-  → https://downloads.khinsider.com/game-soundtracks/album/chrono-cross
-
-  Leyendo álbum...
-  8 pistas encontradas.
-  Buscando portada del álbum...
-  ✓  Portada optimizada (503 KB → 178 KB)
-
-  Extrayendo enlaces en paralelo (8 hilos)...
-  ·  01. Chrono Cross -Scars of Time-.flac  [FLAC]
-  ·  02. Arni (Home World).flac  [FLAC]
-  ·  03. Whirlwind - The Brink of Death.flac  [FLAC]
-
-  Descargando...
-  ████████████████████  100%  8.8 MB/s   [8/8]
-
-─────────────────────────────────────────────
-  ✓  Descarga completa
-
-  ¿Convertir a M4A ahora? [S/n]:
-
-  Convirtiendo 8 archivo(s)  FLAC → M4A  [aac_at  256k  portada incluida]
-
-  [1.01]  01. Chrono Cross -Scars of Time-.flac
-          01. Chrono Cross -Scars of Time-.m4a ✓
-  [1.02]  02. Arni (Home World).flac
-          02. Arni (Home World).m4a ✓
-
-─────────────────────────────────────────────
-  ✓  8 archivo(s) convertidos
-
-  ¿Etiquetar con VGMDB? [S/n]:
-  ✓  Album     CHRONO CROSS Orchestral Arrangement
-  ✓  Artist    Yasunori Mitsuda
-  ✓  Año       2019
-  ✓  Catalog   SQEX-10725
-  ✓  Tracklist 8 pista(s)  —  1 disco(s)
-
-─────────────────────────────────────────────
-  ✓  8 pista(s) con artist global
-```
-
----
-
-
+## Usage / Uso
 
 Just run `vgmget` and paste a KHInsider URL or a local folder path when prompted.
 
 Ejecuta `vgmget` y pega una URL de KHInsider o una ruta de carpeta local cuando se solicite.
-
-```
-vgmget
-
-♬ vgmget
-─────────────────────────────────────────────
-  Pega una URL para descargar,
-  o una ruta de carpeta para convertir FLAC a M4A.
-
-  →
-```
 
 ### Mode 1 — Download from KHInsider / Modo 1 — Descarga desde KHInsider
 
