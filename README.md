@@ -18,7 +18,7 @@
 - Tags files with VGMDB data: title, artist, composer, album, year, catalog number, genre
 - Parallel scraping with per-thread HTTP sessions (no repeated TLS handshakes)
 - Clean progress bar during download — no verbose aria2c output
-- Minimal, emoji-free CLI following the Unix rule of silence
+- Quiet CLI following the Unix rule of silence
 
 ---
 
@@ -30,7 +30,25 @@
 - Etiqueta los archivos con datos de VGMDB: título, artista, compositor, álbum, año, número de catálogo, género
 - Scraping paralelo con sesiones HTTP por hilo (sin handshakes TLS repetidos)
 - Barra de progreso limpia durante la descarga — sin output verbose de aria2c
-- CLI minimalista sin emojis, siguiendo la regla Unix del silencio
+- CLI silencioso siguiendo la regla Unix del silencio
+
+---
+
+## Design Goals
+
+- Keep dependencies minimal — no pip packages beyond `requests` and `beautifulsoup4`
+- Prioritize Apple-compatible AAC output (`aac_at` first, always)
+- Never delete original FLAC files unless every conversion succeeds
+- Preserve album structure, including multi-disc subfolder layouts
+- Keep the interface quiet and readable — output only what matters
+
+---
+
+- Dependencias mínimas — sin paquetes pip más allá de `requests` y `beautifulsoup4`
+- Priorizar salida AAC compatible con Apple (`aac_at` primero, siempre)
+- Nunca eliminar los FLAC originales a menos que todas las conversiones sean exitosas
+- Preservar la estructura del álbum, incluyendo subcarpetas de múltiples discos
+- Interfaz silenciosa y legible — mostrar solo lo que importa
 
 ---
 
@@ -53,14 +71,19 @@ pip install requests beautifulsoup4
 ## Installation / Instalación
 
 ```bash
+# Clone the repository / Clonar el repositorio
+git clone https://github.com/ArielLopezA/vgmget.git
+cd vgmget
+
 # Give execution permissions / Dar permisos de ejecución
 chmod +x vgmget
 
-# Move to local bin / Mover a carpeta de binarios locales
-mv vgmget ~/.local/bin/vgmget
+# Create local bin if needed / Crear carpeta de binarios si no existe
+mkdir -p ~/.local/bin
 
-# Copy the tagging module / Copiar el módulo de etiquetado
-cp vgmdb_tag.py ~/.local/bin/vgmdb_tag.py
+# Copy files / Copiar archivos
+cp vgmget ~/.local/bin/
+cp vgmdb_tag.py ~/.local/bin/
 
 # Make sure ~/.local/bin is in your PATH / Asegurarse de que esté en el PATH
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
