@@ -1,6 +1,9 @@
 # vgmget ♬
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org)
+[![Platform](https://img.shields.io/badge/platform-macOS-lightgrey.svg)](https://www.apple.com/macos)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/ArielLopezA/vgmget/pulls)
 
 > Designed for macOS. Some features (`aac_at`, `pbpaste`) are not available on other platforms.
 
