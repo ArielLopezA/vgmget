@@ -2,13 +2,29 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Download, convert and tag video game soundtracks from KHInsider.
+> Designed for macOS. Some features (`aac_at`, `pbpaste`) are not available on other platforms.
+
+[Features](#features--características) · [Demo](#demo) · [Requirements](#requirements--requisitos) · [Installation](#installation--instalación) · [Usage](#usage--uso) · [VGMDB Tagging](#vgmdb-tagging--etiquetado-con-vgmdb) · [Configuration](#configuration--configuración)
+
+Download, convert and tag video game soundtracks from KHInsider in a single command.
 
 **vgmget** is a command-line tool for downloading video game soundtracks from [KHInsider](https://downloads.khinsider.com), converting them to M4A (AAC), embedding cover art, and tagging them with detailed metadata from [VGMDB](https://vgmdb.net) — all from a single command.
 
 ---
 
 **vgmget** es una herramienta de línea de comandos para descargar soundtracks de videojuegos desde [KHInsider](https://downloads.khinsider.com), convertirlos a M4A (AAC), incrustar la portada del álbum y etiquetarlos con metadatos detallados desde [VGMDB](https://vgmdb.net) — todo desde un solo comando.
+
+## Why?
+
+Existing downloaders only download.
+
+**vgmget** downloads, converts, embeds artwork and writes accurate VGMDB metadata in one workflow — while preserving album structure and never touching original files until every conversion succeeds.
+
+---
+
+Los descargadores existentes solo descargan.
+
+**vgmget** descarga, convierte, incrusta la portada y escribe metadatos precisos de VGMDB en un solo flujo — preservando la estructura del álbum y sin tocar los archivos originales hasta que todas las conversiones sean exitosas.
 
 ## Features / Características
 
@@ -175,13 +191,6 @@ Tags written / Tags escritos:
 | Comment / Comentario | VGMDB Catalog Number |
 | Genre / Género | "Soundtrack" (fixed / fijo) |
 | Cover / Portada | KHInsider or VGMDB URL |
-
-## Files / Archivos
-
-| File / Archivo | Description / Descripción |
-|---|---|
-| `vgmget` | Main script / Script principal |
-| `vgmdb_tag.py` | VGMDB tagging module / Módulo de etiquetado VGMDB |
 
 ## Configuration / Configuración
 
