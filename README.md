@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org)
 [![Platform](https://img.shields.io/badge/platform-macOS-lightgrey.svg)](https://www.apple.com/macos)
+[![GitHub Release](https://img.shields.io/github/v/release/ArielLopezA/vgmget)](https://github.com/ArielLopezA/vgmget/releases)
 
 
 > Designed for macOS. Some features (`aac_at`, `pbpaste`) are not available on other platforms.
@@ -117,17 +118,14 @@ Los descargadores existentes solo descargan.
 brew install aria2 ffmpeg atomicparsley
 ```
 
-### Python
-
-```bash
-pip install requests beautifulsoup4
-```
-
 ## Installation / Instalación
 
 ```bash
 # Clone and enter directory
 git clone https://github.com/ArielLopezA/vgmget.git && cd vgmget
+
+# Install Python dependencies
+pip3 install requests beautifulsoup4
 
 # Install scripts to ~/.local/bin
 chmod +x vgmget
