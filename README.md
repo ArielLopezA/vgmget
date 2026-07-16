@@ -10,7 +10,7 @@
 
 [Features](#features--características) · [Demo](#demo) · [Requirements](#requirements--requisitos) · [Installation](#installation--instalación) · [Usage](#usage--uso) · [VGMDB Tagging](#vgmdb-tagging--etiquetado-con-vgmdb) · [Configuration](#configuration--configuración)
 
-Download, convert and tag video game soundtracks from KHInsider in a single command.
+Download, convert, embed artwork and tag video game soundtracks from KHInsider — all in a single command.
 
 **vgmget** is a command-line tool for downloading video game soundtracks from [KHInsider](https://downloads.khinsider.com), converting them to M4A (AAC), embedding cover art, and tagging them with detailed metadata from [VGMDB](https://vgmdb.net) — all from a single command.
 
